@@ -1,0 +1,16 @@
+template(name="twitta")
+    h3 Tweets from the Hosts
+    .col-lg-12
+      if tweets.count
+        .list-group
+          each tweets
+            .row.tweet-content
+              .col-md-3
+                img(src=" #{avatar} ")
+              .col-md-9
+                strong #{name}
+                p #{content}
+                .small.pull-right {{moments timestamp}}
+            hr
+      else
+        span No Tweets available

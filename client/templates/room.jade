@@ -1,0 +1,44 @@
+template(name="room")
+  .row
+    .col-lg-3
+      h3 Tweets from the Hosts
+      .col-lg-12
+        if tweets.count
+          .list-group
+            each tweets
+              .row.tweet-content
+                .col-md-3
+                  img(src=" #{avatar} ")
+                .col-md-9
+                  strong #{name}
+                  p #{content}
+                  .small.pull-right {{moments timestamp}}
+              hr
+        else
+          p No tweets available
+    .col-lg-9
+      .row
+        ul.nav.nav-tabs
+          +roomList
+      .row
+        h3 #{roomName}
+        #messages-container.box
+          if messages.count
+            if messages
+              each messages
+                .message
+                  label.username #{username}:
+                  span.content #{content}
+          else
+            .message No messages yet
+
+        form.input-group(data-action="create-message")
+          input.form-control(data-value="create-message" placeholder="New message")
+          span.input-group-btn
+            input.btn.btn-default(type="submit" value="Send")
+
+        label Who's in this room:
+        #users
+          each roomUsers
+            img(src=" #{data.avatar} ")
+            span(class='label label-default #{state}') #{data.username}

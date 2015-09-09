@@ -1,0 +1,16 @@
+template(name="ptweets")
+  h3 Tweets from P1's
+  .col-lg-12
+    if ptweets.count
+      .list-group
+        each ptweets
+          .row.tweet-content
+            .col-md-3
+              img(src=" #{avatar} ")
+            #tweet-content.col-md-9
+              strong #{name}
+              p #{content}
+                .small.pull-right {{moments timestamp}}
+          hr
+    else
+      span No Tweets available

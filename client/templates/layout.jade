@@ -1,0 +1,19 @@
+template(name="layout")
+  nav.navbar.navbar-default(role="navigation")
+    .container
+      .navbar-header
+        a.navbar-brand(href="/") P1 Chat Room
+      #navbar.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            if isLoggedIn
+              a.navbar-right(href="/board") P1 Tweets
+        ul.nav.navbar-nav.navbar-right
+          li
+            if hasRoomId
+              a(href="/rooms") Leave Room
+          li
+            +loginButtons
+        //- if the user has a room id show a link to leave the room.
+  .container
+    +yield
